@@ -1,0 +1,21 @@
+{
+  "name": "magenmagic/module-custom-logic-for-index-dynamic-categories",
+  "version": "1.0.0",
+  "description": "This module adds custom logic for indexation products in category.",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "wyomind/dynamiccategory": "4.0.*"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Magenmagic\\CustomLogicForIndexDynamicCategories\\": ""
+    }
+  }
+}

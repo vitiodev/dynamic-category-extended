@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magenmagic\CustomLogicForIndexDynamicCategories\Api\Data\CategoryDataInterface"
+                type="Magenmagic\CustomLogicForIndexDynamicCategories\Model\Queue\CategoryData"/>
+    <!-- Add 'nregexp' to Mysql Adapter -->
+    <preference for="Magento\Framework\DB\Adapter\Pdo\Mysql"
+                type="Magenmagic\CustomLogicForIndexDynamicCategories\DB\Adapter\Pdo\Mysql"/>
+    <!-- Add custom logic to helper data -->
+    <type name="Wyomind\DynamicCategory\Helper\Data">
+        <plugin name="rewrite_helper_data"
+                type="Magenmagic\CustomLogicForIndexDynamicCategories\Plugin\DynamicCategory\Helper\DataPlugin"/>
+    </type>
+    <!-- Add custom logic to helper indexer -->
+    <type name="Wyomind\DynamicCategory\Helper\Indexer">
+        <plugin name="rewrite_helper_indexer"
+                type="Magenmagic\CustomLogicForIndexDynamicCategories\Plugin\DynamicCategory\Helper\IndexerPlugin"/>
+    </type>
+    <!-- Check if product attribute exist -->
+    <type name="Magento\Rule\Model\Condition\Product\AbstractProduct">
+        <plugin name="check_if_attr_exist"
+                type="Magenmagic\CustomLogicForIndexDynamicCategories\Plugin\Rule\Model\Condition\Product\AbstractProductPlugin"/>
+    </type>
+</config>

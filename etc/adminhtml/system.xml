@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="dynamic_category" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Dynamic Category</label>
+            <tab>magenmagic</tab>
+            <resource>Magenmagic_CustomLogicForIndexDynamicCategories::config</resource>
+            <group id="settings" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                <field id="custom_query" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use query instead validation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>This option give us possible to use sql query for get products from db with filters by rules.
+                        It can improve speed for save category and reindex all categories by cron.</comment>
+                </field>
+                <field id="custom_indexer" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use custom logic for indexer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Custom logic for save category and url rewrites.</comment>
+                </field>
+                <field id="url_rewrite" translate="label" type="select" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rewrite urls during indexation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>After save category, do we need to rewrite urls for products?</comment>
+                    <depends>
+                        <field id="custom_indexer">1</field>
+                    </depends>
+                </field>
+                <field id="check_attr" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Check, if exist product attribute</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If we have problem with indexation or save category with dynamic products, we can turn on this option.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
